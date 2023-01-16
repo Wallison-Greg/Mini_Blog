@@ -9,6 +9,9 @@ import About from "./pages/about/About";
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 
+//importando o context
+import { AuthProvider } from './context/AuthContext';
+
 
 //importando componentes
 import Navbar from './components/Navbar';
@@ -19,24 +22,31 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className="app">
-      <BrowserRouter>{/* BrowserRouter serve para encapsular as rotas */}
+      <AuthProvider>
+        <BrowserRouter>{/* BrowserRouter serve para encapsular as rotas */}
 
-        <Navbar></Navbar>
+          <Navbar></Navbar>
 
-        <div className="container">
-          <Routes>{/* Routes ira receber as rotas */}
-            <Route path='/' element={<Home/>}/>
-            <Route path='/about' element={<About/>}/>
-            <Route path='/register' element={<Register/>}/>
-            <Route path='/login' element={<Login/>}/>
-          </Routes>
-        </div>
+          <div className="container">
+            <Routes>{/* Routes ira receber as rotas */}
+              <Route path='/' element={<Home/>}/>
+              <Route path='/about' element={<About/>}/>
+              <Route path='/register' element={<Register/>}/>
+              <Route path='/login' element={<Login/>}/>
+            </Routes>
+          </div>
 
-        <Footer></Footer>
+          <Footer></Footer>
 
-      </BrowserRouter>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }
 
 export default App;
+
+/*paths instalados 
+npx create-react-app
+npm i firebase
+npm i react-router-dom */

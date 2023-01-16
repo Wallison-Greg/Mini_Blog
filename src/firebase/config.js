@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firebase" //utilizando o path do db do firebase
+import { getFirestore } from "firebase/firestore" //utilizando o path do db do firebase
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
