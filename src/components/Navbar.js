@@ -1,7 +1,13 @@
-import { NavLink } from "react-router-dom";
 import './Navbar.css';
+import { NavLink } from "react-router-dom";
+import { useAuthentication } from '../hooks/useAuthentication';
+import { useAuthValue } from '../context/AuthContext';
 
 const Navbar = () => {
+
+    const {user} = useAuthValue();
+    const {logout} = useAuthentication();
+
   return (
     <nav className="navbar">
         <NavLink to="/" className="brand"> 
@@ -11,15 +17,34 @@ const Navbar = () => {
             <li>
                 <NavLink to="/">Home</NavLink>
             </li>
-            <li>
-                <NavLink to="/login">Entrar</NavLink>
-            </li>
-            <li>
-                <NavLink to="/register">Cadastrar</NavLink>
-            </li>
+            {!user && ( //caso o usuario esteja logado esse menu não ira aparecer
+                <>
+                    <li>
+                        <NavLink to="/login">Entrar</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/register">Cadastrar</NavLink>
+                    </li>
+                </>
+            )}
+            {user && ( //caso o usuario esteja logado esse menu ira aparecer
+                <>
+                    <li>
+                        <NavLink to="/post/create">New Post</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/dashboard">Dashboard</NavLink>
+                    </li>
+                </>
+            )}
             <li>
                 <NavLink to="/about">Sobre</NavLink>
             </li>
+            {user && (
+                <li>
+                    <button onClick={logout}>Sair</button>
+                </li>
+            )}
         </ul>
     </nav>
   )
