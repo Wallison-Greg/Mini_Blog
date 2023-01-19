@@ -17,6 +17,7 @@ import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import CreatePost from './pages/createpost/CreatePost';
 import Dashboard from './pages/dashboard/Dashboard';
+import Search from './pages/search/Search';
 
 //importando o context
 import { AuthProvider } from './context/AuthContext';
@@ -56,6 +57,7 @@ function App() {
 
               <Route path='/' element={<Home/>}/>
               <Route path='/about' element={<About/>}/>
+              <Route path='/search' element={<Search/>}/>
               {/* realizando bloquei de tela caso o usuario n esteja cadastrado */}
               <Route 
                 path='/register' 
