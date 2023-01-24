@@ -5,7 +5,7 @@ import { collection, query, orderBy, onSnapshot, where } from "firebase/firestor
 
 export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
-    const [document, setDocument] = useState(null);
+    const [documents, setDocuments] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(null);
 
@@ -31,7 +31,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
                 }
 
                 await onSnapshot(q, (querySnapshot) => {
-                    setDocument(
+                    setDocuments(
                         querySnapshot.docs.map((doc) => ({
                             id: doc.id,
                             ...doc.data(),
@@ -50,12 +50,12 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
         }
 
         loadData();
-    }, [docCollection, search, uid, cancelled]);
+    }, [docCollection, documents, search, uid, cancelled]);
 
     useEffect(()=> {
         return () => setCancelled(true);
     }, []);
 
-    return {document, loading, error};
+    return {documents, loading, error};
 
 }
