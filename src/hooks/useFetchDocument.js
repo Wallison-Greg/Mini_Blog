@@ -13,7 +13,7 @@ export const useFetchDocument = (docCollection, id) => {
     const [cancelled, setCancelled] = useState(false);
 
     useEffect(()=> {
-        async function loadDocument (){
+        const loadDocument = async () =>{
 
             if(cancelled) return
 

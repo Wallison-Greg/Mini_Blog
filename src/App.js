@@ -59,7 +59,7 @@ function App() {
               <Route path='/' element={<Home/>}/>
               <Route path='/about' element={<About/>}/>
               <Route path='/search' element={<Search/>}/>
-              <Route path='/posts/:id' element={<Post/>}/>
+              <Route path='/post/:id' element={<Post/>}/>
               {/* realizando bloquei de tela caso o usuario n esteja cadastrado */}
               <Route 
                 path='/register' 

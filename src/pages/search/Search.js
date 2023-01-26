@@ -14,7 +14,7 @@ const Search = () => {
     const query = useQuery();
     const search = query.get("q");
 
-    const {document: posts} = useFetchDocuments("posts", search);
+    const {documents: posts} = useFetchDocuments("posts", search);
 
   return (
     <div className='search_container'>

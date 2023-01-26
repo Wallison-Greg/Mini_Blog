@@ -9,7 +9,7 @@ const PostDetail = ({post}) => {
         <h2>{post.title}</h2>
         <p className='createdby'>{post.createdBy}</p>
         <div className='tags'>
-            {post.arrayTags.map((tag) =>(
+            {post.tags.map((tag) =>(
                 <p key={tag}>
                     <span>#</span>
                     {tag}
